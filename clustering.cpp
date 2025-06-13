@@ -105,7 +105,6 @@ void hierarchicalClustering(
         
         // PASO 3: Registrar la fusión que se va a realizar
         writeFusionStep(clusters[bestI], clusters[bestJ], bestDist, outputDir);
-        updateDendrogram(clusters[bestI], clusters[bestJ], bestDist, outputDir);
         
         // PASO 4: Fusionar los dos clusters más cercanos
         vector<int> merged = clusters[bestI];  // Copia el primer cluster
@@ -134,6 +133,6 @@ void hierarchicalClustering(
         currentMatrix = newMatrix;
         writeMatrixStep(currentMatrix, ++step, outputDir);
     }
-    
+    updateDendrogram(outputDir);
     // Al final del bucle, queda un solo cluster que contiene todos los elementos
 }
